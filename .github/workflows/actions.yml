@@ -1,21 +1,11 @@
 name: Actions Workflow
 
-on: [push,pull_request]
+on: 
+ repository_dispatch
 
 jobs:
-  run-github-actions:
+  run-dispatch-action:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: List files
-        run: |
-         pwd
-         ls -al
-      - name: Simple JS Actions
-        id: greet
-        uses: actions/hello-world-javascript-action@v1
-        with: 
-          who-to-greet: John
-      - name: Log greeting
-        run: echo "${{steps.greet.outputs.time}}"
+      - name: echo request payload
+        run: echo "${{ github.events.client_payload.env }}"
