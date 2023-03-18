@@ -1,6 +1,6 @@
 name: Actions Workflow
 
-on: [push]
+on: [push,pull_request]
 
 jobs:
   run-github-actions:
@@ -11,7 +11,7 @@ jobs:
       - name: List files
         run: |
          pwd
-         ls
+         ls -al
       - name: Simple JS Actions
         id: greet
         uses: actions/hello-world-javascript-action@v1
