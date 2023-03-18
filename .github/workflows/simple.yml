@@ -1,0 +1,16 @@
+name: simple-workflow
+
+on: [push]
+
+jobs:
+  run-commands-shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: echo "Hello World"
+        shell: bash
+      - name: echo version
+        run: |
+          npm -v
+          node -v
+        shell: bash
